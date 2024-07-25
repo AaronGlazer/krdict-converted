@@ -36,9 +36,13 @@
             <etm>
               <xsl:value-of select="feat[@att='origin']/@val" />
             </etm>
-            <tr>
-              <xsl:value-of select="WordForm/feat[@att='pronunciation']/@val" />
-            </tr>
+            <xsl:for-each select="WordForm">
+              <xsl:if test="feat[@att='type']/@val = '발음'">
+              <tr>
+                <xsl:value-of select="feat[@att='pronunciation']/@val" />
+              </tr>
+              </xsl:if>
+            </xsl:for-each>
             <xsl:for-each select="Sense">
               <def>
                 <deftext>
