@@ -39,7 +39,12 @@
             <xsl:for-each select="WordForm">
               <xsl:if test="feat[@att='type']/@val = '발음'">
               <tr>
-                <xsl:value-of select="feat[@att='pronunciation']/@val" />
+		<iref>
+		  <xsl:attribute name="href">
+		    <xsl:value-of select="feat[@att='sound']/@val" />
+		  </xsl:attribute>
+                  <xsl:value-of select="feat[@att='pronunciation']/@val" />
+		</iref>
               </tr>
               </xsl:if>
             </xsl:for-each>
